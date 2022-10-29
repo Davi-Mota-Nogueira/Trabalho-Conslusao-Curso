@@ -1,0 +1,48 @@
+@import url('./main.css');
+
+.tabEditProfile{
+    outline: none;    
+    background-color: transparent;
+    border: none;
+}
+
+.tabEditProfileContainer{
+    display: flex;
+    flex-direction: row;
+    
+    margin-bottom: 0;
+}
+
+.containerItemResume{
+    margin-left: 20px;
+}
+
+.bottomLine{
+    margin-top: -1px !important;
+}
+
+.tabEditProfile{
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.activeItemEditProfile{
+    opacity: 1;
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+    transition: 0.4s all ease-in;
+}
+
+.bottomEditProfile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.btnBottomEditProfile{
+    margin-left: 75px !important;
+}
+
+

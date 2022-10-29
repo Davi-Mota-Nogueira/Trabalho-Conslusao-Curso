@@ -1,0 +1,189 @@
+{{#unless error}}
+<div class="container text-center">
+    <div class="row">
+        <div class="col"><p class="fw-bold">{{nome}}</p></div>
+        <div class="col"><p class="fw-bold">Prontuário</p></div>
+        <div class="col"><p class="fw-bold">CPF</p></div>
+        <div class="col">
+            <form action="/consulta" method="post">
+                <input type="hidden" name="cpf" value="{{cpf}}">
+                <button class="btn btn-success col-7" style="--bs-btn-padding-x: .25rem;">MARCAR CONSULTA</button>
+             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><p>{{prontuario}}</p></div>
+        <div class="col"><p>{{cpf}}</p></div>
+        <div class="col"><button type="button" class="btn btn-outline-ligth col-7" style="--bs-btn-padding-x: .25rem;"></button></div>
+    </div>
+
+    <div class="tabEditProfileContainer" id="tabEditProfileContainer">
+        <div class="containerItem">
+            <form action="/editar" method="post">
+                <input type="hidden" name="cpf" value="{{cpf}}">
+                <button class="tabEditProfile activeItemEditProfile">DADOS CADASTRAIS</button>
+            </form>
+        </div> 
+
+        <div class="containerItemResume">
+            <form action="/paciente-resumo" method="post">
+                <input type="hidden" name="cpf" value="{{cpf}}">
+                <button class="tabEditProfile">RESUMO</button>
+            </form>
+        </div>
+    </div>
+    <hr class="my-4 bottomLine">
+</div>
+
+<div class="container mt-3">
+    <h4 class="text-center mb-4">INFORMAÇÕES DO PACIENTE</h4>
+    <form action="/atualizar" method="post">
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="Nome" class="form-label fw-bold">Nome</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{nome}}" type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu Nome" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Nome da Mãe</label>
+                <input value="{{nomeMae}}" type="text" class="form-control" id="nomeMae" name="nomeMae" placeholder="Digite o nome da Mãe" required>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="cpf" class="form-label fw-bold">CPF</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{cpf}}" type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Data de Nascimento</label>
+                <input value="{{dataNasc}}" type="date" class="form-control" id="dataNasc" name="dataNasc" required>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="idadeGest" class="form-label fw-bold">Idade Gestacional</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="" type="text" class="form-control" id="idadeGest" name="idadeGest" placeholder="Digite a idade gestacional" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="sexo" class="form-label fw-bold">Sexo</label>
+                <select class="form-select" aria-label="Default select example">
+                <option value="F" selected>Feminino</option>
+                <option value="M">Masculino</option>              
+                </select>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Email</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input value="{{email}}" type="email" class="form-control" id="email" name="email" placeholder="Digite seu Email" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="celular" class="form-label fw-bold">Celular</label>
+                
+                <input  value="{{tel}}" type="telefone" class="form-control" id="telefone" name="telefone" placeholder="Digite seu número de telefone" required>
+            </div>  
+        </div>
+        <div class="row">
+            <label for="obs" class="form-label fw-bold">Observações</label>
+            <input type="hidden" value="" name="obs">
+            <input  value="" type="text" class="form-control" id="nome" name="obs" placeholder="Digite as Observações">
+        </div>
+        
+        <hr class="my-4">
+    </form>        
+</div>
+
+<div class="container mt-3">
+    <h4 class="text-center mb-4">ENDEREÇO</h4>
+    <form action="/atualizar" method="post">
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="cep" class="form-label fw-bold">CEP</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{cep}}" type="text" class="form-control" id="cep" name="cep" placeholder="Digite seu CEP" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Rua</label>
+                <input value="{{rua}}" type="text" class="form-control" id="rua" name="rua" placeholder="Digite o nome da Rua" required>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="numero" class="form-label fw-bold">Número</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{numero}}" type="text" class="form-control" id="numero" name="numero" placeholder="" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Cidade</label>
+                <input value="{{cidade}}" type="text" class="form-control" id="cidade" name="cidade" required>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="bairro" class="form-label fw-bold">Bairro</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{bairro}}" type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="complemento" class="form-label fw-bold">Complemento</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="{{complemento}}" type="text" class="form-control" id="complemento" name="complemento" placeholder="" required>
+            </div>
+            
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="estado" class="form-label fw-bold">Estado</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input value="{{uf}}" type="text" class="form-control" id="estado" name="estado" placeholder="Digite o Estado" required>
+            </div>
+            <hr class="my-4">
+    </form>
+</div>
+
+<div class="container mt-3 pb-4">
+    <h4 class="text-center mb-4">CARTEIRA DO PACIENTE</h4>
+    <form action="/atualizar" method="post">
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="convenio" class="form-label fw-bold">Convênio</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="SUS" type="text" class="form-control" id="convenio" name="convenio" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="numeroSUS" class="form-label fw-bold">Número Carteira</label>
+                <input value="{{numeroSUS}}" type="text" class="form-control" id="numeroSUS" name="numeroSUS" required>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="validade" class="form-label fw-bold">Validade</label>
+                <input type="hidden" value="{{cpf}}" name="cpf">
+                <input  value="20/08/2022" type="text" class="form-control" id="validade" name="validade" placeholder="" required>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="bottomEditProfile">
+            <button class="w-30 btn btn-primary btn-lg .btnBottomEditProfile mx-3" type="submit">SALVAR</button>
+            <a href="/home" class="w-30 btn-lg btn btn-outline-danger mx-3" >Cancelar</a>
+
+        </div>
+        
+    </form>  
+    
+
+    
+</div>
+
+{{else}}
+<div class="card bg-danger p-4 mt-5 text-white">
+  <div class="card-body fw-bold text-center">
+    Houve um problema: {{problema}}
+  </div>
+  
+</div>
+{{/unless}}

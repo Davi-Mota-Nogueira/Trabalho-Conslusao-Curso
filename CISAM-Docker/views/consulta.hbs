@@ -1,0 +1,95 @@
+{{#unless error}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consulta_{{cpf}}">
+  Marcar Consulta
+</button>
+
+
+<!-- Modal Consulta-->
+<div class="modal" id="consulta_{{cpf}}" tabindex="-1" aria-labelledby="Tela de Consulta"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Marcar Consulta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row g-2">
+                <form class="row g-3" novalidate action="/marcar-consulta" method="post">
+                    <div class="col-md-4">
+                        <label for="dia" class="form-label">Dia</label>
+                        <input type="text" inputmode="numeric" class="form-control" id="dia" name="dia" required min="1" max="31">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="mes" class="form-label">Mês</label>
+                        <select class="form-select" id="mes" name="mes" aria-label="Selecionar Mês">
+                            <option value="Janeiro">Janeiro</option>
+                            <option value="Fevereiro">Fevereiro</option>
+                            <option value="Março">Março</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Maio">Maio</option>
+                            <option value="Junho">Junho</option>
+                            <option value="Julho">Julho</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Setembro">Setembro</option>
+                            <option value="Outubro">Outubro</option>
+                            <option value="Novembro">Novembro</option>
+                            <option value="Dezembro">Dezembro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ano" class="form-label">Ano</label>
+                        <div class="input-group has-validation">
+                            <input type="text" inputmode="numeric" class="form-control" id="ano" name="ano" aria-describedby="inputGroupPrepend" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="text" inputmode="numeric" class="form-control" id="hora" name="hora" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="minuto" class="form-label">Minuto</label>
+                        <input type="text" inputmode="numeric" class="form-control" id="minuto" name="minuto" required>
+                    </div>
+                    <div class="col-mb-3">
+                        <label for="queixaPaciente" class="form-label">Queixa do Paciente</label>
+                        <textarea class="form-control" id="queixaPaciente" name="queixaPaciente" rows="3" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="cpf" value="{{cpf}}">
+                        <button class="btn btn-primary" type="submit" data-bs-target="#confirmação_{{cpf}}">Confirmar Consulta</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Consulta Confirmação-->
+<div class="modal fade" id="confirmação_{{cpf}}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">CONFIRMAÇÃO</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                CONSULTA CONFIRMADA COM SUCESSO!
+                E-mail enviado para {{email}}.
+                <img src="/img/consulta-confirmada.svg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Confirmado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{else}}
+<div class="card bg-danger p-4 mt-5 text-white">
+  <div class="card-body fw-bold text-center">
+    Houve um problema: {{problema}}
+  </div>
+  
+</div>
+{{/unless}}

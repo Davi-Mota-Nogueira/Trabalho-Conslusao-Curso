@@ -1,0 +1,102 @@
+{{#unless error}}
+<div class="container text-center">
+    <div class="row">
+        <div class="col"><p class="fw-bold">{{nome}}</p></div>
+        <div class="col"><p class="fw-bold">Prontuário</p></div>
+        <div class="col"><p class="fw-bold">CPF</p></div>
+        <div class="col">
+        <form action="/consulta" method="post">
+            <input type="hidden" name="cpf" value="{{cpf}}">
+            <button class="btn btn-success col-7" style="--bs-btn-padding-x: .25rem;">MARCAR CONSULTA</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><p>{{prontuario}}</p></div>
+        <div class="col"><p>{{cpf}}</p></div>
+        <div class="col"><button type="button" class="btn btn-outline-ligth col-7" style="--bs-btn-padding-x: .25rem;"></button></div>
+    </div>
+
+    <div class="tabEditProfileContainer">
+         <div class="containerItem">
+            <form action="/editar" method="post">
+                <input type="hidden" name="cpf" value="{{cpf}}">
+                <button class="tabEditProfile">DADOS CADASTRAIS</button>
+            </form>
+        </div> 
+
+        <div class="containerItemResume">
+            <form action="/paciente-resumo" method="post">
+                <input type="hidden" name="cpf" value="{{cpf}}">
+                <button class="tabEditProfile activeItemEditProfile">RESUMO</button>
+            </form>
+        </div>
+    </div>
+    <hr class="my-4 bottomLine">
+</div>
+
+<div class="container mt-3">
+    <h4 class="text-center mb-4">INFORMAÇÕES DO PACIENTE</h4>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="Nome" class="form-label fw-bold">Nome</label>
+                <p class="fw">{{nome}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Nome da Mãe</label>
+                <p class="fw-bold">{{nomeMae}}</p>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="cpf" class="form-label fw-bold">CPF</label>
+                <p class="fw">{{cpf}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Data de Nascimento</label>
+                <p class="fw">{{dataNasc}}</p>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="idadeGest" class="form-label fw-bold">Idade Gestacional</label>
+                <p class="fw-bold"></p>
+            </div>
+            <div class="col-sm-6">
+                <label for="sexo" class="form-label fw-bold">Sexo</label>
+                <p class="fw-bold">{{sexo}}</p>   
+                </select>
+            </div>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Email</label>
+                <p class="fw-bold">{{email}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label for="celular" class="form-label fw-bold">Celular</label>
+                <p class="fw">{{tel}}</p>
+            </div>  
+        </div>
+        <div class="row">
+            <label for="obs" class="form-label fw-bold">Observações</label>
+            <input type="hidden" value="" name="obs">
+            <input  value="" type="text" class="form-control" id="nome" name="obs" placeholder="Digite as Observações">
+        </div>
+        
+        <hr class="my-4">
+    </form>        
+</div>
+
+
+
+{{else}}
+<div class="card bg-danger p-4 mt-5 text-white">
+  <div class="card-body fw-bold text-center">
+    Houve um problema: {{problema}}
+  </div>
+  
+</div>
+{{/unless}}
+
+

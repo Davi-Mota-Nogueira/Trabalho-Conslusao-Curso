@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS only -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+        <!--ICONSCOUT-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Pacientes</title>
+    </head>
+
+    <body>
+        <header>
+            {{>header}}
+        </header>
+        
+        <div class="flex-dashboard">
+            
+            <div class="sidebar">
+                <div>
+                    <ul class="sidebarItens">
+                        <li class="nav-item {{#if NavActivePac}} active {{/if}}">
+                            <i class="uil uil-users-alt iconsSidebar"></i>
+                            <a class="nav-link " aria-current="page" href="/home">Pacientes</a>
+                        </li>
+                        <li class="nav-item {{#if NavActiveRel}} active {{/if}}">
+                            <i class="uil uil-file-medical-alt iconsSidebar"></i>
+                            <a class="nav-link " href="/relatorios">Relatórios</a>
+                        </li>
+                        <li class="nav-item {{#if NavActiveCad}} active {{/if}}">
+                            <i class="uil uil-user-plus iconsSidebar"></i>
+                            <a class="nav-link " href="/cadastros">Cadastros</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <main>
+                
+
+                <div class="mainContent">
+                    {{{body}}}
+                </div>
+            </main>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- JavaScript Bundle with Popper -->
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="./../../public/js/EnvioEmail.js"></script>
+
+        
+    </body>
+
+</html>
